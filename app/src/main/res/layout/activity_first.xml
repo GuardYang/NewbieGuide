@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/ll_anchor"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/btn_simple"
@@ -41,6 +41,7 @@
         android:id="@+id/btn_rect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:text="指定RectF高亮"
         android:textAllCaps="false" />
 

@@ -87,8 +87,8 @@ public class FirstActivity extends AppCompatActivity {
                                 paint.setColor(Color.WHITE);
                                 paint.setStyle(Paint.Style.STROKE);
                                 paint.setStrokeWidth(10);
-                                paint.setPathEffect(new DashPathEffect(new float[]{20, 20}, 0));
-                                canvas.drawCircle(rectF.centerX(), rectF.centerY(), rectF.width() / 2 + 10, paint);
+//                                paint.setPathEffect(new DashPathEffect(new float[]{20, 20}, 0));
+//                                canvas.drawCircle(rectF.centerX(), rectF.centerY(), rectF.width() / 2 + 10, paint);
                             }
                         })
                         .build();
@@ -96,9 +96,18 @@ public class FirstActivity extends AppCompatActivity {
                         .setLabel("anchor")
                         .anchor(anchorView)
                         .alwaysShow(true)//总是显示，调试时可以打开
-                        .addGuidePage(GuidePage.newInstance()
-                                .addHighLightWithOptions(btnAnchor, HighLight.Shape.CIRCLE, options)
-                                .setLayoutRes(R.layout.view_guide_anchor))
+                        .setOnGuideChangedListener(new OnGuideChangedListener() {
+                            @Override
+                            public void onShowed(Controller controller) {
+                                Toast.makeText(FirstActivity.this, "引导层显示", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onRemoved(Controller controller) {
+                                Toast.makeText(FirstActivity.this, "引导层消失", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addGuidePage(GuidePage.newInstance().addHighLightWithOptions(btnAnchor, HighLight.Shape.CIRCLE, options))
                         .show();
             }
         });
