@@ -10,12 +10,12 @@
     <LinearLayout
         android:id="@+id/ll_anchor"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="60dp">
 
         <Button
             android:id="@+id/btn_simple"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="简单使用" />
 
         <Button
@@ -26,8 +26,8 @@
 
         <Button
             android:id="@+id/btn_anchor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="anchor" />
 
         <Button
@@ -64,9 +64,9 @@
         android:text="ScrollView" />
 
     <LinearLayout
+        android:id="@+id/ll_relative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ll_relative"
         android:orientation="vertical">
 
         <Button

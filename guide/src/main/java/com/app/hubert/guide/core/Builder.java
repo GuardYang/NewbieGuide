@@ -75,13 +75,7 @@ public class Builder {
         return this;
     }
 
-    /**
-     * 设置引导页切换监听
-     */
-    public Builder setOnPageChangedListener(OnPageChangedListener onPageChangedListener) {
-        this.onPageChangedListener = onPageChangedListener;
-        return this;
-    }
+
 
     /**
      * 设置引导层的辨识名，必须设置项，否则报错
