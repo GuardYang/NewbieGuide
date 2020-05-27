@@ -33,12 +33,10 @@ public class FirstActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
-
         btnSimple = (Button) findViewById(R.id.btn_simple);
         btnRect = (Button) findViewById(R.id.btn_rect);
         anchorView = findViewById(R.id.ll_anchor);
         llRelativeView = findViewById(R.id.ll_relative);
-
         btnAnchor = (Button) findViewById(R.id.btn_anchor);
         btnAnchor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +84,27 @@ public class FirstActivity extends AppCompatActivity {
                 controller1 = builder.build();
                 controller1.show();
 
+                Builder builder2 = NewbieGuide.with(FirstActivity.this);
+                GuidePage page2 = GuidePage.newInstance()
 
+                        .setEverywhereCancelable(false);//是否点击任意地方跳转下一页或者消失引导层，默认true
+                builder2.setLabel("llRelativeView")
+                        .anchor(llRelativeView)
+                        .addGuidePage(page2)
+                        .alwaysShow(true)//总是显示，调试时可以打开
+                        .setOnGuideChangedListener(new OnGuideChangedListener() {
+                            @Override
+                            public void onShowed(Controller controller) {
+                                Toast.makeText(FirstActivity.this, "引导层显示", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onRemoved(Controller controller) {
+                                Toast.makeText(FirstActivity.this, "引导层消失", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                controller2 = builder2.build();
+                controller2.show();
             }
         });
         btnRect.setOnClickListener(new View.OnClickListener() {
