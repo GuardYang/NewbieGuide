@@ -75,6 +75,7 @@ public class FirstActivity extends AppCompatActivity {
         });
         //设置anchor 及 自定义绘制图形
         final View anchorView = findViewById(R.id.ll_anchor);
+        final View llRelativeView = findViewById(R.id.ll_relative);
         final Button btnAnchor = (Button) findViewById(R.id.btn_anchor);
         btnAnchor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,8 +108,27 @@ public class FirstActivity extends AppCompatActivity {
                                 Toast.makeText(FirstActivity.this, "引导层消失", Toast.LENGTH_SHORT).show();
                             }
                         })
-                        .addGuidePage(GuidePage.newInstance().addHighLightWithOptions(btnAnchor, HighLight.Shape.CIRCLE, options))
+                        .addGuidePage(GuidePage.newInstance()
+                                .addHighLightWithOptions(btnAnchor, HighLight.Shape.CIRCLE, options)
+                                .addHighLightWithOptions(btnSimple, HighLight.Shape.CIRCLE, options)
+                        )
                         .show();
+                NewbieGuide.with(FirstActivity.this)
+                        .setLabel("anchor")
+                        .anchor(llRelativeView)
+                        .alwaysShow(true)//总是显示，调试时可以打开
+                        .setOnGuideChangedListener(new OnGuideChangedListener() {
+                            @Override
+                            public void onShowed(Controller controller) {
+                                Toast.makeText(FirstActivity.this, "引导层显示", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onRemoved(Controller controller) {
+                                Toast.makeText(FirstActivity.this, "引导层消失", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addGuidePage(GuidePage.newInstance()).show();
             }
         });
         //监听
@@ -190,10 +210,9 @@ public class FirstActivity extends AppCompatActivity {
             public void onClick(View v) {
                 NewbieGuide.with(FirstActivity.this)
                         .setLabel("rect")
+                        .anchor(anchorView)
                         .alwaysShow(true)//总是显示，调试时可以打开
-                        .addGuidePage(GuidePage.newInstance()
-                                .addHighLight(new RectF(0, 800, 500, 1000))
-                        )
+                        .addGuidePage(GuidePage.newInstance().addHighLight(new RectF(600, 200, 800, 0)))
                         .show();
             }
         });
