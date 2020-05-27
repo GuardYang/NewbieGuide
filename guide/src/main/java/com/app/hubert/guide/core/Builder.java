@@ -49,17 +49,6 @@ public class Builder {
     }
 
     /**
-     * 引导层的显示次数，默认是1次。<br>
-     * 这里的次数是通过sp控制的，是指同一个label在不清除缓存的情况下可以显示的总次数。
-     *
-     * @param count 次数
-     */
-    public Builder setShowCounts(int count) {
-        this.showCounts = count;
-        return this;
-    }
-
-    /**
      * 是否总是显示引导层，即是否无限次的显示。<br>
      * 默认为false，如果设置了true，{@link Builder#setShowCounts} 将无效。
      *

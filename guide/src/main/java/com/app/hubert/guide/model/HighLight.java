@@ -33,7 +33,7 @@ public interface HighLight {
     @Nullable
     HighlightOptions getOptions();
 
-    public enum Shape {
+     enum Shape {
         CIRCLE,//圆形
         RECTANGLE, //矩形
         OVAL,//椭圆

@@ -15,17 +15,6 @@ import com.app.hubert.guide.core.Builder;
 public class NewbieGuide {
 
     public static final String TAG = "NewbieGuide";
-
-    /**
-     * 成功显示标示
-     */
-    public static final int SUCCESS = 1;
-
-    /**
-     * 显示失败标示，即已经显示过一次
-     */
-    public static final int FAILED = -1;
-
     /**
      * 新手指引入口
      *
@@ -42,17 +31,6 @@ public class NewbieGuide {
 
     public static Builder with(android.support.v4.app.Fragment v4Fragment) {
         return new Builder(v4Fragment);
-    }
-
-    /**
-     * 重置标签的显示次数
-     *
-     * @param context
-     * @param label   标签名
-     */
-    public static void resetLabel(Context context, String label) {
-        SharedPreferences sp = context.getSharedPreferences(NewbieGuide.TAG, Activity.MODE_PRIVATE);
-        sp.edit().putInt(label, 0).apply();
     }
 }
 

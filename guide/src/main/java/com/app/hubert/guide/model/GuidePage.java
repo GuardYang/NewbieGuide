@@ -25,11 +25,9 @@ public class GuidePage {
     private List<HighLight> highLights = new ArrayList<>();
     private boolean everywhereCancelable = true;
     private int backgroundColor;
-
     private int layoutResId;
     private int[] clickToDismissIds;
     private OnLayoutInflatedListener onLayoutInflatedListener;
-    private OnHighlightDrewListener onHighlightDrewListener;
     private Animation enterAnimation, exitAnimation;
 
     public static GuidePage newInstance() {
@@ -48,17 +46,11 @@ public class GuidePage {
         return addHighLight(view, shape, 0, 0, null);
     }
 
-    public GuidePage addHighLight(View view, HighLight.Shape shape, RelativeGuide relativeGuide) {
-        return addHighLight(view, shape, 0, 0, relativeGuide);
-    }
-
     public GuidePage addHighLight(View view, HighLight.Shape shape, int padding) {
         return addHighLight(view, shape, 0, padding, null);
     }
 
-    public GuidePage addHighLight(View view, HighLight.Shape shape, int padding, RelativeGuide relativeGuide) {
-        return addHighLight(view, shape, 0, padding, relativeGuide);
-    }
+
 
     /**
      * 添加需要高亮的view
@@ -78,26 +70,6 @@ public class GuidePage {
         }
         highLights.add(highlight);
         return this;
-    }
-
-    public GuidePage addHighLight(RectF rectF) {
-        return addHighLight(rectF, HighLight.Shape.RECTANGLE, 0, null);
-    }
-
-    public GuidePage addHighLight(RectF rectF, RelativeGuide relativeGuide) {
-        return addHighLight(rectF, HighLight.Shape.RECTANGLE, 0, relativeGuide);
-    }
-
-    public GuidePage addHighLight(RectF rectF, HighLight.Shape shape) {
-        return addHighLight(rectF, shape, 0, null);
-    }
-
-    public GuidePage addHighLight(RectF rectF, HighLight.Shape shape, RelativeGuide relativeGuide) {
-        return addHighLight(rectF, shape, 0, relativeGuide);
-    }
-
-    public GuidePage addHighLight(RectF rectF, HighLight.Shape shape, int round) {
-        return addHighLight(rectF, shape, round, null);
     }
 
     /**
@@ -138,25 +110,7 @@ public class GuidePage {
         return this;
     }
 
-    public GuidePage addHighLightWithOptions(RectF rectF, HighlightOptions options) {
-        return addHighLightWithOptions(rectF, HighLight.Shape.RECTANGLE, 0, options);
-    }
 
-    public GuidePage addHighLightWithOptions(RectF rectF, HighLight.Shape shape, HighlightOptions options) {
-        return addHighLightWithOptions(rectF, shape, 0, options);
-    }
-
-    public GuidePage addHighLightWithOptions(RectF rectF, HighLight.Shape shape, int round, HighlightOptions options) {
-        HighlightRectF highlight = new HighlightRectF(rectF, shape, round);
-        if (options != null) {
-            if (options.relativeGuide != null) {
-                options.relativeGuide.highLight = highlight;
-            }
-        }
-        highlight.setOptions(options);
-        highLights.add(highlight);
-        return this;
-    }
 
     /**
      * 添加引导层布局
@@ -213,9 +167,7 @@ public class GuidePage {
         return everywhereCancelable;
     }
 
-    public boolean isEmpty() {
-        return layoutResId == 0 && highLights.size() == 0;
-    }
+
 
     public List<HighLight> getHighLights() {
         return highLights;
