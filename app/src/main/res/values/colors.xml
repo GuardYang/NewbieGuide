@@ -6,4 +6,5 @@
 
 
     <color name="testColor">#9e4891ff</color>
+    <color name="guide_ransparent">#66000000</color>
 </resources>

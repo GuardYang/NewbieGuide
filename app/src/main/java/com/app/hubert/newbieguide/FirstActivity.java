@@ -65,6 +65,7 @@ public class FirstActivity extends AppCompatActivity {
                 GuidePage page = GuidePage.newInstance()
                         .addHighLightWithOptions(btnAnchor, HighLight.Shape.CIRCLE, options)
                         .addHighLightWithOptions(btnSimple, HighLight.Shape.CIRCLE, options)
+                        .setBackgroundColor(getResources().getColor(R.color.guide_ransparent))
                         .setEverywhereCancelable(false);//是否点击任意地方跳转下一页或者消失引导层，默认true
                 builder.setLabel("anchorView")
                         .anchor(anchorView)
